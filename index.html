@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Mosquito Game</title>
+	<style type="text/css">
+		
+		.wraper {overflow: hidden;padding:20px;
+			width: 500px;height: 400px;background:green;
+		}
+     
+        .wraper img {width: 100px;position: relative;}
+
+	</style>
+</head>
+<body>
+
+<div class="wraper">
+    <img onClick="hitMosquito()" id="mosquito" src="mosquito.png">
+</div>
+<br>
+<button onClick="startGame()">Start Game</button>
+
+<h1>Total Count = <span id="status"> 0 </span></h1>
+
+  <script type="text/javascript">
+
+  	let count = 0;
+
+  	let isGameStart = false;
+  
+    function startGame(){
+
+    document.getElementById("status").innerText = 0;
+
+    isGameStart = true 
+
+    count = 0;
+
+    let mosquit = document.getElementById('mosquito');
+	
+	  let time = setInterval(()=>{
+     
+    let i = Math.floor(Math.random()*300)+1;
+
+    let j = Math.floor(Math.random()*300)+1;
+
+    mosquit.style.left = i + "px";
+
+    mosquit.style.top = j + "px";
+
+	}, 2000);
+
+    setTimeout(()=>{
+    	clearTimeout(time);
+      isGameStart = false;
+
+    }, 30000);
+   
+    }
+
+    function hitMosquito(){
+     if(isGameStart){
+     	count++;
+    	document.getElementById("status").innerText = count;
+     }
+    }
+  
+  //  Sorting 
+
+  let data = [12,33,11,1];
+
+  debugger;
+ 
+  for(let i=0; i<data.length; i++){
+
+  	 for(let j=0; j<data.length; j++){
+  	 	if(data[j]>data[j+1]){
+  	 		let temp = data[j];
+  	 		data[j] = data[j+1];
+  	 		data[j+1] = temp;
+  	 	}
+  	 }
+  	 
+  }  
+console.log(data);
+ 
+
+  </script>
+
+
+</body>
+</html>
