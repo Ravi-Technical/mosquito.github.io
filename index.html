@@ -4,90 +4,55 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Mosquito Game</title>
-	<style type="text/css">
-		
-		.wraper {overflow: hidden;padding:20px;
-			width: 500px;height: 400px;background:green;
-		}
-     
-        .wraper img {width: 100px;position: relative;}
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,600;0,800;0,900;1,200;1,300;1,400;1,800;1,900&display=swap" rel="stylesheet">
 
-	</style>
+ 
 </head>
 <body>
 
+<div class="wholepage">
+  <video autoplay muted loop id="myVideo">
+  <source src="assets/images/background-video.mp4" type="video/mp4">
+</video>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7"></div>
+      <div class="col-md-5 pull-right">
+        <div class="data pt-3">
+          <div>
+             <button class="btn btn-success" id="begainGame" onClick="startGame()">Game Start</button>
+             <button class="btn btn-danger" id="hideShown">Game Over</button>
+             <button class="btn btn-info">Total Score = <span id="status"> 0 </span></button>
+          </div>
+         <div class="progress mt-2">
+           <div id="progressBar">1%</div>
+         </div>
+       </div>
+      </div>
+    </div>
+  </div>
+
 <div class="wraper">
-    <img onClick="hitMosquito()" id="mosquito" src="mosquito.png">
+   <span onclick="hitMosquito()" id="mosquito">
+    <img src="assets/images/mosquito.png">
+     <span id="hitShot"></span>
+    </span>
 </div>
-<br>
-<button onClick="startGame()">Start Game</button>
+</div>
 
-<h1>Total Count = <span id="status"> 0 </span></h1>
 
-  <script type="text/javascript">
 
-  	let count = 0;
 
-  	let isGameStart = false;
-  
-    function startGame(){
 
-    document.getElementById("status").innerText = 0;
+<!------------------------- Footer Section -------------------->
 
-    isGameStart = true 
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/custom.js"></script>
 
-    count = 0;
-
-    let mosquit = document.getElementById('mosquito');
-	
-	  let time = setInterval(()=>{
-     
-    let i = Math.floor(Math.random()*300)+1;
-
-    let j = Math.floor(Math.random()*300)+1;
-
-    mosquit.style.left = i + "px";
-
-    mosquit.style.top = j + "px";
-
-	}, 2000);
-
-    setTimeout(()=>{
-    	clearTimeout(time);
-      isGameStart = false;
-
-    }, 30000);
-   
-    }
-
-    function hitMosquito(){
-     if(isGameStart){
-     	count++;
-    	document.getElementById("status").innerText = count;
-     }
-    }
-  
-  //  Sorting 
-
-  let data = [12,33,11,1];
-
-  debugger;
- 
-  for(let i=0; i<data.length; i++){
-
-  	 for(let j=0; j<data.length; j++){
-  	 	if(data[j]>data[j+1]){
-  	 		let temp = data[j];
-  	 		data[j] = data[j+1];
-  	 		data[j+1] = temp;
-  	 	}
-  	 }
-  	 
-  }  
-console.log(data);
- 
-
-  </script>
 
 
 </body>
